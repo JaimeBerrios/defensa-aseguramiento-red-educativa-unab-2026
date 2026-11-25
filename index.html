@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seguridad perimetral · Universidad Dr. Andrés Bello</title>
+  <link rel="icon" href="assets/institucional/isotipo-azul.png" type="image/png">
+  <link rel="stylesheet" href="vendor/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="vendor/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="css/presentacion.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section id="portada" data-expositor="Genesis Abigail Saravia Carpio" data-segundos="30" class="portada">
+        <div class="lamina">
+          <h2>Investigación de cátedra</h2>
+          <div class="contenido">
+            <div class="logos">
+              <img src="assets/institucional/isotipo-azul.png" alt="Universidad Dr. Andrés Bello">
+              <img src="assets/institucional/logo-facultad.png" alt="Facultad de Tecnología e Innovación">
+            </div>
+            <p class="institucion">Universidad Dr. Andrés Bello · Sede Regional de San Miguel</p>
+            <p>Facultad de Tecnología e Innovación · Ingeniería en Sistemas y Computación</p>
+            <p class="titulo-portada">Diseño de un modelo de seguridad perimetral y segmentación lógica para el aseguramiento de la red de datos en la Sede de Enlaces con la Educación, Distrito de Santa Rosa de Lima, Municipio de La Unión Norte, El Salvador, 2026.</p>
+            <div class="portada-datos">
+              <p><strong>Asignatura</strong> · Diseño de Sistemas de Seguridad de Redes de Datos</p>
+              <p><strong>Docente</strong> · MduEV. Ing. Franklin Geovany Buruca Hernández</p>
+            </div>
+            <ul class="equipo" aria-label="Integrantes">
+              <li>Genesis Abigail Saravia Carpio</li>
+              <li>Jaime Fernando Berrios Ortiz</li>
+              <li>Jefferson Jared Bonilla Meléndez</li>
+              <li>Rosmeri Estefani González Pérez</li>
+              <li>Florentín Alexander Treminio Herrera</li>
+            </ul>
+            <div class="portada-cierre"><p>San Miguel, 27 de noviembre de 2026</p><img src="assets/institucional/acreditacion.png" alt="Acreditación institucional"></div>
+          </div>
+        </div>
+        <aside class="notes">30 s · Saludar al jurado y presentar la cátedra y al equipo.</aside>
+      </section>
+
+      <section id="titulo-investigacion" data-expositor="Genesis Abigail Saravia Carpio" data-segundos="40" class="">
+        <div class="lamina">
+          <h2>Título de la investigación</h2>
+          <div class="contenido">
+            <p class="titulo-aprobado">Diseño de un modelo de seguridad perimetral y segmentación lógica para el aseguramiento de la red de datos en la Sede de Enlaces con la Educación, Distrito de Santa Rosa de Lima, Municipio de La Unión Norte, El Salvador, 2026.</p><div class="grid "><div class="card"><h3>Unidad de análisis</h3><p>Red de datos de la Sede de Enlaces con la Educación</p></div><div class="card"><h3>Delimitación</h3><p>Distrito de Santa Rosa de Lima, municipio de La Unión Norte · 2026</p></div></div>
+          </div>
+        </div>
+        <aside class="notes">40 s · Leer el título aprobado y situar el estudio en la sede y el período indicados.</aside>
+      </section>
+
+      <section id="introduccion" data-expositor="Genesis Abigail Saravia Carpio" data-segundos="50" class="">
+        <div class="lamina">
+          <h2>Introducción</h2>
+          <div class="contenido">
+            <p class="entrada">La sede presta soporte técnico y mantenimiento a equipos del sector educativo.</p><div class="grid tres"><div class="card"><h3>Contexto</h3><p>En la red conviven estaciones institucionales y dispositivos que ingresan a mantenimiento.</p></div><div class="card"><h3>Propósito</h3><p>Proponer un modelo que separe las áreas de trabajo y regule el tráfico entre ellas.</p></div><div class="card"><h3>Alcance</h3><p>El diagnóstico se realiza en la sede y la evaluación del diseño se prevé en GNS3.</p></div></div>
+          </div>
+        </div>
+        <aside class="notes">50 s · Explicar la función de la sede y el alcance del proyecto. Dar la palabra a Jaime.</aside>
+      </section>
+
+      <section id="problema" data-expositor="Jaime Fernando Berrios Ortiz" data-segundos="45" class="">
+        <div class="lamina">
+          <h2>Planteamiento del problema</h2>
+          <div class="contenido">
+            <div class="grid "><div class="card"><h3>Red plana en estrella</h3><p>El conmutador central concentra la conectividad sin separación lógica formal entre los dominios técnico y administrativo.</p></div><div class="card"><h3>Exposición y deterioro</h3><p>La sede reporta puertos inoperativos. La conectividad compartida expone registros y servicios a accesos no autorizados e interrupciones.</p></div></div><div class="pregunta"><h3>Pregunta de investigación</h3><p>¿De qué manera el diseño de un modelo de seguridad perimetral y segmentación lógica permite mitigar los riesgos informáticos y garantizar la confidencialidad, integridad y disponibilidad en la red de datos de la Sede de Enlaces con la Educación en Santa Rosa de Lima durante 2026?</p></div>
+          </div>
+        </div>
+        <aside class="notes">45 s · Presentar la situación descrita por la sede y leer la pregunta aprobada. El estado de los puertos se verificará en campo.</aside>
+      </section>
+
+      <section id="justificacion" data-expositor="Jaime Fernando Berrios Ortiz" data-segundos="35" class="">
+        <div class="lamina">
+          <h2>Justificación</h2>
+          <div class="contenido">
+            <div class="grid criterios"><div class="card"><h3>Conveniencia</h3><p>Orientar decisiones sobre segmentación y protección de la red.</p></div><div class="card"><h3>Relevancia social</h3><p>Apoyar al personal técnico y administrativo y la continuidad de los servicios educativos.</p></div><div class="card"><h3>Implicaciones prácticas</h3><p>Valorar el diseño en GNS3 antes de considerar su adopción en la sede.</p></div><div class="card"><h3>Valor teórico</h3><p>Relacionar los riesgos del caso con la defensa en profundidad.</p></div><div class="card"><h3>Utilidad metodológica</h3><p>Vincular hallazgos, controles y pruebas para documentar un procedimiento reproducible.</p></div></div><p class="note">Criterios de Hernández-Sampieri y Mendoza Torres (2023).</p>
+          </div>
+        </div>
+        <aside class="notes">35 s · Sintetizar los cinco criterios y el aporte esperado para la sede.</aside>
+      </section>
+
+      <section id="objetivos" data-expositor="Jaime Fernando Berrios Ortiz" data-segundos="40" class="">
+        <div class="lamina">
+          <h2>Objetivos de la investigación</h2>
+          <div class="contenido">
+            <div class="pregunta"><h3>Objetivo general</h3><p>Proponer un modelo de seguridad perimetral y segmentación lógica para la red de datos de la Sede de Enlaces con la Educación en el distrito de Santa Rosa de Lima, con el fin de mitigar riesgos informáticos y preservar la confidencialidad, integridad y disponibilidad del tráfico institucional durante 2026.</p></div><div class="grid objetivos">
+              <div class="card"><h3>OE1 · Diagnosticar</h3><p>Diagnosticar las condiciones técnicas actuales de la infraestructura, estaciones y flujos de tráfico, identificando vulnerabilidades y amenazas.</p></div>
+              <div class="card"><h3>OE2 · Formular</h3><p>Formular una matriz de análisis y evaluación de riesgos y Políticas de Seguridad Informática alineadas al marco regulatorio y operativo institucional.</p></div>
+              <div class="card"><h3>OE3 · Estructurar</h3><p>Estructurar en GNS3 una arquitectura perimetral con VLAN, ACL y cortafuegos Linux para aislar zonas administrativas, técnicas y de diagnóstico.</p></div>
+              <div class="card"><h3>OE4 · Configurar</h3><p>Configurar controles de capa de aplicación mediante proxy y certificados digitales HTTPS/TLS en un laboratorio simulado.</p></div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">40 s · Presentar el objetivo general y los cuatro objetivos específicos en el orden del reporte. Dar la palabra a Rosmeri.</aside>
+      </section>
+
+      <section id="marco-teorico-1" data-expositor="Rosmeri Estefani González Pérez" data-segundos="40" class="">
+        <div class="lamina">
+          <h2>Marco teórico · Seguridad lógica y perimetral</h2>
+          <div class="contenido">
+            <div class="grid tres"><div class="card"><h3>Segmentación mediante VLAN</h3><p>Separa los dominios de difusión y permite organizar los equipos por función.</p></div><div class="card"><h3>Listas de control de acceso</h3><p>Definen qué comunicaciones están autorizadas entre zonas.</p></div><div class="card"><h3>Cortafuegos con inspección de estado</h3><p>Aplica políticas de filtrado y considera el estado de las conexiones.</p></div></div><p class="note">Fundamento técnico · CISA (2022), Chandramouli (2022) y Stallings (2018).</p>
+          </div>
+        </div>
+        <aside class="notes">40 s · Explicar cómo se complementan la separación lógica, las reglas de acceso y el control perimetral.</aside>
+      </section>
+
+      <section id="marco-teorico-2" data-expositor="Rosmeri Estefani González Pérez" data-segundos="40" class="">
+        <div class="lamina">
+          <h2>Marco teórico · Infraestructura física</h2>
+          <div class="contenido">
+            <div class="grid tres"><div class="card"><h3>Conmutación de capa 2</h3><p>El switch reenvía tramas según las direcciones MAC y concentra los enlaces de la topología en estrella.</p></div><div class="card"><h3>Cableado estructurado</h3><p>El cableado UTP Cat 5e o Cat 6 y los conectores RJ-45 forman parte del canal físico.</p></div><div class="card"><h3>Degradación física</h3><p>El desgaste de puertos, conectores y tomas puede generar desconexiones y errores de enlace.</p></div></div><p class="note">Fundamento técnico · ANSI/TIA-568.2-E (2024) y Stallings (2018).</p>
+          </div>
+        </div>
+        <aside class="notes">40 s · Relacionar los conceptos con la revisión del switch central, el cableado y las tomas de red.</aside>
+      </section>
+
+      <section id="metodologia" data-expositor="Rosmeri Estefani González Pérez" data-segundos="40" class="">
+        <div class="lamina">
+          <h2>Metodología</h2>
+          <div class="contenido">
+            <p class="entrada">Estudio de caso único · Enfoque cualitativo · Desarrollo tecnológico</p>
+            <div class="esquema-metodologico">
+              <ol class="cuadrantes" aria-label="Proceso heurístico de cuatro fases">
+                <li class="fase contexto"><span class="fase-numero">01</span><strong>Contextualización</strong><span class="fase-texto">Problema y límites</span></li>
+                <li class="fase clasificacion"><span class="fase-numero">02</span><strong>Clasificación</strong><span class="fase-texto">Fuentes y alcance</span></li>
+                <li class="fase categorias"><span class="fase-numero">03</span><strong>Categorización</strong><span class="fase-texto">Matrices por tema</span></li>
+                <li class="fase construccion"><span class="fase-numero">04</span><strong>Construcción</strong><span class="fase-texto">Evidencia y propuesta</span></li>
+              </ol>
+              <span class="ciclo" aria-hidden="true"><span>↻</span></span>
+              <p class="detalle contexto"><strong>Preparación</strong>Delimitar el problema, las fuentes y los criterios del caso.</p>
+              <p class="detalle clasificacion"><strong>Organización</strong>Sistematizar los documentos y definir su alcance.</p>
+              <p class="detalle categorias"><strong>Análisis temático</strong>Registrar las evidencias en matrices según los temas y su contexto institucional.</p>
+              <p class="detalle construccion"><strong>Interpretación</strong>Integrar las evidencias y documentar la propuesta tecnológica.</p>
+            </div>
+            <p class="note triangulacion"><strong>Triangulación</strong><span>Entrevista al encargado de la sede</span><span>Observación técnica</span><span>Revisión documental</span></p>
+          </div>
+        </div>
+        <aside class="notes">40 s · Comenzar por contextualización, abajo a la derecha, y seguir los cuatro cuadrantes en sentido horario. Distinguir el diagnóstico cualitativo de las pruebas técnicas previstas en GNS3. Dar la palabra a Jefferson para las referencias.</aside>
+      </section>
+
+      <section id="referencias" data-expositor="Jefferson Jared Bonilla Meléndez" data-segundos="25" class="">
+        <div class="lamina">
+          <h2>Referencias bibliográficas</h2>
+          <div class="contenido">
+            <ul class="referencias">
+              <li>Chandramouli, R. (2022). <cite>Guide to a secure enterprise network landscape</cite> (NIST SP 800-215). National Institute of Standards and Technology. <a href="https://doi.org/10.6028/NIST.SP.800-215">https://doi.org/10.6028/NIST.SP.800-215</a></li>
+              <li>Cybersecurity and Infrastructure Security Agency. (2022, enero). <cite>Layering network security through segmentation</cite> [Infografía]. U.S. Department of Homeland Security. <a href="https://www.cisa.gov/sites/default/files/2023-01/layering-network-security-segmentation_infographic_508_0.pdf" aria-label="Abrir la infografía de CISA">cisa.gov · Infografía oficial</a></li>
+              <li>Hernández-Sampieri, R., &amp; Mendoza Torres, C. P. (2023). <cite>Metodología de la investigación: Las rutas cuantitativa, cualitativa y mixta</cite> (2.ª ed.). McGraw Hill.</li>
+              <li>Stallings, W. (2018). <cite>Network security essentials: Applications and standards</cite> (6.ª ed.). Pearson.</li>
+              <li>Telecommunications Industry Association. (2024). <cite>Balanced twisted-pair telecommunications cabling and components standard</cite> (ANSI/TIA-568.2-E).</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">25 s · Identificar las fuentes de metodología, segmentación, seguridad de redes y cableado.</aside>
+      </section>
+
+      <section id="cierre" data-expositor="" data-segundos="10" class="cierre">
+        <div class="lamina">
+          <h2>Preguntas del jurado</h2>
+          <div class="contenido">
+            <div class="logos">
+              <img src="assets/institucional/isotipo-azul.png" alt="Universidad Dr. Andrés Bello">
+              <img src="assets/institucional/logo-facultad.png" alt="Facultad de Tecnología e Innovación">
+            </div><p class="entrada">Gracias por su atención.</p>
+          </div>
+        </div>
+        <aside class="notes">10 s · Agradecer al jurado y abrir la sesión de preguntas.</aside>
+      </section>
+    </div>
+  </div>
+  <footer class="pie" aria-label="Expositor y número de lámina">
+    <span>UNAB · Regional San Miguel</span>
+    <span id="expositor">Genesis Abigail Saravia Carpio</span>
+    <span id="numero-lamina"></span>
+  </footer>
+  <script src="vendor/reveal.js/dist/reveal.js"></script>
+  <script src="vendor/reveal.js/dist/plugin/notes.js"></script>
+  <script src="vendor/reveal.js/dist/plugin/zoom.js"></script>
+  <script src="vendor/reveal.js/dist/plugin/search.js"></script>
+  <script src="js/presentacion.js"></script>
+</body>
+</html>
