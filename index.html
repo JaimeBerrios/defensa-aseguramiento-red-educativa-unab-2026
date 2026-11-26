@@ -151,7 +151,7 @@
             </div>
           </div>
         </div>
-        <aside class="notes">75 s · Relacionar los riesgos altos R3, R4 y R5 con la segmentación. Explicar los dos flujos permitidos y los cuatro bloqueados, y cómo el estado de conexión permite las respuestas.</aside>
+        <aside class="notes">75 s · Ubicar P1–P4 en infraestructura física, P5–P7 en lógica y P8–P10 en seguridad perimetral. Vincular R3, R4 y R5 con la segmentación. Explicar los dos flujos permitidos y los cuatro bloqueados, y cómo el estado de conexión permite las respuestas.</aside>
       </section>
 
       <section id="conclusiones" data-expositor="Florentín Alexander Treminio Herrera" data-segundos="45">
@@ -159,9 +159,10 @@
           <h2>Conclusiones</h2>
           <div class="contenido">
             <ul>
-              <li>Las entrevistas sustentan la matriz de riesgos y las políticas propuestas.</li>
-              <li>Las tres VLAN y el cortafuegos cumplieron la política ICMP en el laboratorio.</li>
-              <li>Squid respondió HTTP 200 y bloqueó un túnel HTTPS desde Fedora.</li>
+              <li><strong>OE1.</strong> Las entrevistas documentaron capacidad, cableado, segmentación y controles declarados.</li>
+              <li><strong>OE2.</strong> Se valoraron seis riesgos y se formularon seis políticas.</li>
+              <li><strong>OE3.</strong> Las tres VLAN y nftables cumplieron los seis casos ICMP.</li>
+              <li><strong>OE4.</strong> TLS permitido en el ensayo local. En GNS3, Squid permitió HTTP y bloqueó CONNECT desde Fedora.</li>
             </ul>
           </div>
         </div>
@@ -186,13 +187,30 @@
         <div class="lamina">
           <h2>Cronograma y presupuesto</h2>
           <div class="contenido">
-            <div class="grid">
-              <article class="card"><h3>Cronograma</h3><p>Entrevistas a distancia el 11 de noviembre. Visita sin realizar. Validación en GNS3 el 26 de noviembre.</p></article>
-              <article class="card"><h3>Presupuesto</h3><p><strong>US$408.51</strong> de referencia para switch y cable. Instalación y partidas restantes por cotizar.</p></article>
+            <ol class="hitos-entrega" aria-label="Hitos de noviembre de 2026">
+              <li><time datetime="2026-11-11">11 nov.</time><span>Dos entrevistas escritas</span></li>
+              <li><time datetime="2026-11-25">25 nov.</time><span>Pruebas del cortafuegos individual</span></li>
+              <li><time datetime="2026-11-26">26 nov.</time><span>Validación integrada en GNS3</span></li>
+              <li><time datetime="2026-11-27">27 nov.</time><span>Defensa programada</span></li>
+            </ol>
+            <p class="note alcance-cronograma">Visitas sin realizar · Lista de cotejo sin aplicar</p>
+            <div class="resumen-presupuesto">
+              <table>
+                <caption>Precios referenciales para la sede</caption>
+                <tbody>
+                  <tr><th scope="row"><a href="https://techzone.com.sv/store/tp-33/">Switch SG3452 de 48 puertos</a></th><td>US$427.69</td></tr>
+                  <tr><th scope="row"><a href="https://xht.com.sv/product/bobina-de-cable-utp-nexxt-cat6-1000pies-305m-azul-23awg/">Bobina Cat 6 de 305 m</a></th><td>US$225.00</td></tr>
+                </tbody>
+              </table>
+              <div class="subtotal-presupuesto">
+                <span>Subtotal referencial</span>
+                <strong>US$652.69</strong>
+                <small>Instalación y partidas restantes por cotizar</small>
+              </div>
             </div>
           </div>
         </div>
-        <aside class="notes">35 s · Explicar que el subtotal se calculó con precios públicos y cantidades de referencia. Las compras y gastos adicionales del laboratorio no están documentados.</aside>
+        <aside class="notes">35 s · Recorrer los cuatro hitos y mencionar que las visitas no se realizaron. Explicar el subtotal: Tech Zone y Xtreme Hardware, fichas consultadas el 26 de noviembre de 2026. El switch de 48 puertos deja margen para el enlace y la reserva si se confirman los 24 puntos reportados.</aside>
       </section>
 
       <section id="anexos" data-expositor="Jefferson Jared Bonilla Meléndez" data-segundos="30">

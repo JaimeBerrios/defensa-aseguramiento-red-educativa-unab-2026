@@ -322,3 +322,80 @@ body {
   .pie { display: none; }
   .reveal .lamina { print-color-adjust: exact; }
 }
+
+#cronograma-presupuesto .hitos-entrega {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#cronograma-presupuesto .hitos-entrega li {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  margin: 0;
+  padding: 13px 14px 8px;
+  border-top: 3px solid var(--unab-blue);
+}
+
+.hitos-entrega time {
+  color: var(--unab-blue);
+  font-weight: 700;
+}
+
+.hitos-entrega span,
+#cronograma-presupuesto .alcance-cronograma {
+  font-size: 21px;
+}
+
+#cronograma-presupuesto .alcance-cronograma {
+  margin-top: 10px;
+}
+
+.resumen-presupuesto {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 25px;
+}
+
+.resumen-presupuesto table {
+  width: 100%;
+  margin: 0;
+  font-size: 21px;
+}
+
+.resumen-presupuesto caption {
+  text-align: left;
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.resumen-presupuesto td {
+  white-space: nowrap;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.subtotal-presupuesto {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  background: var(--pastel);
+  border-left: 4px solid var(--unab-blue);
+  padding: 16px 20px;
+}
+
+.subtotal-presupuesto strong {
+  color: var(--unab-blue);
+  font-size: 40px;
+}
+
+.subtotal-presupuesto small {
+  font-size: 17px;
+}
