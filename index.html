@@ -133,10 +133,80 @@
               <p class="detalle categorias"><strong>Análisis temático</strong>Registrar las evidencias en matrices según los temas y su contexto institucional.</p>
               <p class="detalle construccion"><strong>Interpretación</strong>Integrar las evidencias y documentar la propuesta tecnológica.</p>
             </div>
-            <p class="note triangulacion"><strong>Triangulación</strong><span>Entrevista al encargado de la sede</span><span>Observación técnica</span><span>Revisión documental</span></p>
+            <p class="note triangulacion"><strong>Fuentes y alcance</strong><span>Dos entrevistas escritas</span><span>Visita sin realizar</span><span>Pruebas en GNS3</span></p>
           </div>
         </div>
-        <aside class="notes">40 s · Comenzar por contextualización, abajo a la derecha, y seguir los cuatro cuadrantes en sentido horario. Distinguir el diagnóstico cualitativo de las pruebas técnicas previstas en GNS3. Dar la palabra a Jefferson para las referencias.</aside>
+        <aside class="notes">40 s · Comenzar por contextualización, abajo a la derecha, y seguir los cuatro cuadrantes en sentido horario. Explicar que se previó consultar a una persona y que finalmente dos técnicos respondieron la misma guía a distancia. La lista de cotejo quedó sin aplicar. Dar la palabra a Florentín para los resultados.</aside>
+      </section>
+
+      <section id="resultados" data-expositor="Florentín Alexander Treminio Herrera" data-segundos="75">
+        <div class="lamina">
+          <h2>Análisis e interpretación de resultados</h2>
+          <div class="contenido">
+            <p class="entrada">6 de 6 casos ICMP conformes en GNS3</p>
+            <div class="grid tres">
+              <article class="card"><h3>Hallazgos</h3><p>Red compartida entre áreas y riesgo de acceso sin control.</p></article>
+              <article class="card"><h3>Segmentación</h3><p>VLAN 10 Administración, 20 Soporte y 30 Diagnóstico.</p></article>
+              <article class="card"><h3>Filtrado</h3><p>Dos flujos permitidos desde Administración y cuatro bloqueados.</p></article>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">75 s · Relacionar los riesgos altos R3, R4 y R5 con la segmentación. Explicar los dos flujos permitidos y los cuatro bloqueados, y cómo el estado de conexión permite las respuestas.</aside>
+      </section>
+
+      <section id="conclusiones" data-expositor="Florentín Alexander Treminio Herrera" data-segundos="45">
+        <div class="lamina">
+          <h2>Conclusiones</h2>
+          <div class="contenido">
+            <ul>
+              <li>Las entrevistas sustentan la matriz de riesgos y las políticas propuestas.</li>
+              <li>Las tres VLAN y el cortafuegos cumplieron la política ICMP en el laboratorio.</li>
+              <li>Squid respondió HTTP 200 y bloqueó un túnel HTTPS desde Fedora.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">45 s · Vincular el diagnóstico y la valoración de riesgos con los objetivos 1 y 2. Relacionar los ensayos de VLAN y Squid con los objetivos 3 y 4. Dar la palabra a Jefferson.</aside>
+      </section>
+
+      <section id="recomendaciones" data-expositor="Jefferson Jared Bonilla Meléndez" data-segundos="30">
+        <div class="lamina">
+          <h2>Recomendaciones</h2>
+          <div class="contenido">
+            <ul>
+              <li>Verificar inventario, puertos y cableado antes de intervenir la sede.</li>
+              <li>Acordar con la institución los servicios autorizados entre áreas.</li>
+              <li>Completar las pruebas de proxy por VLAN y la verificación tras reinicio.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">30 s · Indicar qué falta comprobar para pasar del laboratorio a la red de la sede.</aside>
+      </section>
+
+      <section id="cronograma-presupuesto" data-expositor="Jefferson Jared Bonilla Meléndez" data-segundos="35">
+        <div class="lamina">
+          <h2>Cronograma y presupuesto</h2>
+          <div class="contenido">
+            <div class="grid">
+              <article class="card"><h3>Cronograma</h3><p>Entrevistas a distancia el 11 de noviembre. Visita sin realizar. Validación en GNS3 el 26 de noviembre.</p></article>
+              <article class="card"><h3>Presupuesto</h3><p><strong>US$408.51</strong> de referencia para switch y cable. Instalación y partidas restantes por cotizar.</p></article>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">35 s · Explicar que el subtotal se calculó con precios públicos y cantidades de referencia. Las compras y gastos adicionales del laboratorio no están documentados.</aside>
+      </section>
+
+      <section id="anexos" data-expositor="Jefferson Jared Bonilla Meléndez" data-segundos="30">
+        <div class="lamina">
+          <h2>Anexos e instrumentos</h2>
+          <div class="contenido">
+            <ul>
+              <li>Dos guías de entrevista respondidas y anonimizadas.</li>
+              <li>Lista de cotejo sin aplicar, ficha de registro documental y ficha técnica.</li>
+              <li>Políticas de seguridad y evidencias del laboratorio GNS3.</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">30 s · Mostrar en el anexo 3 las dos guías respondidas. La lista de cotejo del anexo 4 quedó sin aplicar y las fichas de los anexos 5 y 6 son documentos de apoyo.</aside>
       </section>
 
       <section id="referencias" data-expositor="Jefferson Jared Bonilla Meléndez" data-segundos="25" class="">
@@ -155,9 +225,9 @@
         <aside class="notes">25 s · Identificar las fuentes de metodología, segmentación, seguridad de redes y cableado.</aside>
       </section>
 
-      <section id="cierre" data-expositor="" data-segundos="10" class="cierre">
+      <section id="cierre" data-expositor="" data-segundos="0" class="cierre">
         <div class="lamina">
-          <h2>Preguntas del jurado</h2>
+          <h2>Preguntas</h2>
           <div class="contenido">
             <div class="logos">
               <img src="assets/institucional/isotipo-azul.png" alt="Universidad Dr. Andrés Bello">
@@ -165,7 +235,7 @@
             </div><p class="entrada">Gracias por su atención.</p>
           </div>
         </div>
-        <aside class="notes">10 s · Agradecer al jurado y abrir la sesión de preguntas.</aside>
+        <aside class="notes">Agradecer a los asistentes y abrir la sesión de preguntas.</aside>
       </section>
     </div>
   </div>
