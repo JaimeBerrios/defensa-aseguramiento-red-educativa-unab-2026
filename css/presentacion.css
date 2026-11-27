@@ -52,6 +52,8 @@ body {
 .lamina p { margin: 0; }
 .lamina a { color: #000; text-underline-offset: 0.15em; }
 .lamina a:focus-visible { outline: 2px solid var(--unab-blue); outline-offset: 4px; }
+.anexos-lista a { color: var(--unab-blue); font-weight: 600; }
+.anexos-lista li + li { margin-top: 12px; }
 
 .grid {
   display: grid;
@@ -399,3 +401,49 @@ body {
 .subtotal-presupuesto small {
   font-size: 17px;
 }
+
+.arquitectura-lab {
+  display: grid;
+  grid-template-columns: 1.45fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  font-size: 23px;
+}
+.arquitectura-lab ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.arquitectura-lab li, .arquitectura-lab p {
+  background: var(--pastel);
+  border-left: 3px solid var(--unab-blue);
+  padding: 12px 16px;
+}
+.arquitectura-lab li + li { margin-top: 5px; }
+.arquitectura-lab li span { display: block; font-size: 19px; }
+
+.lamina .evidencia-lab {
+  background: var(--pastel);
+  border-left: 3px solid var(--unab-blue);
+  margin-top: 20px;
+  padding: 12px 16px;
+}
+
+.reveal .tabla-pruebas {
+  width: 100%;
+  font-size: 23px;
+}
+
+@media print {
+  .reveal .slides section[data-secuencia]::after {
+    content: attr(data-expositor) " · " attr(data-secuencia);
+    display: block;
+    position: absolute;
+    right: 54px;
+    bottom: 0;
+    color: #173864;
+    font-size: 17px;
+    print-color-adjust: exact;
+  }
+}
+

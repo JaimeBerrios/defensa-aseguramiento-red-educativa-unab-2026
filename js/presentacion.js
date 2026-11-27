@@ -4,6 +4,11 @@ function actualizarPie({ currentSlide, indexh }) {
     `${indexh + 1} / ${Reveal.getTotalSlides()}`;
 }
 
+const laminas = [...document.querySelectorAll(".slides > section")];
+laminas.forEach((lamina, indice) => {
+  lamina.dataset.secuencia = `${indice + 1} / ${laminas.length}`;
+});
+
 Reveal.on("ready", actualizarPie);
 Reveal.on("slidechanged", actualizarPie);
 
@@ -18,5 +23,6 @@ Reveal.initialize({
   progress: true,
   center: true,
   transition: "fade",
+  pdfMaxPagesPerSlide: 1,
   plugins: [RevealNotes, RevealZoom, RevealSearch]
 });
