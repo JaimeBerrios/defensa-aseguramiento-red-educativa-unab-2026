@@ -1,0 +1,46 @@
+$ ip -br -4 addr show gns3tap0
+gns3tap0         UP             10.255.255.1/30 
+[salida 0]
+
+$ ping -I gns3tap0 -c 2 -W 1 10.255.255.2
+PING 10.255.255.2 (10.255.255.2) from 10.255.255.1 gns3tap0: 56(84) bytes of data.
+64 bytes from 10.255.255.2: icmp_seq=1 ttl=64 time=0.490 ms
+64 bytes from 10.255.255.2: icmp_seq=2 ttl=64 time=0.597 ms
+
+--- 10.255.255.2 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1022ms
+rtt min/avg/max/mdev = 0.490/0.543/0.597/0.053 ms
+[salida 0]
+
+$ curl --max-time 8 --silent --show-error --head --proxy http://10.255.255.2:3128 https://example.com/
+HTTP/1.1 403 Forbidden
+Server: squid/5.7
+Mime-Version: 1.0
+Date: Thu, 26 Nov 2026 09:05:29 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 3068
+X-Squid-Error: ERR_ACCESS_DENIED 0
+Vary: Accept-Language
+Content-Language: en
+X-Cache: MISS from fw-central
+X-Cache-Lookup: NONE from fw-central:3128
+Via: 1.1 fw-central (squid/5.7)
+Connection: keep-alive
+
+curl: (7) CONNECT tunnel failed, response 403
+[salida 7]
+
+Origen HTTP temporal en Fedora, enlazado solo a gns3tap0.
+$ curl --noproxy '' -siS --max-time 8 --proxy http://10.255.255.2:3128 http://10.255.255.1:40355/verificacion-gns3
+HTTP/1.1 200 OK
+Server: BaseHTTP Python/3.15.2
+Date: Thu, 26 Nov 2026 09:06:13 GMT
+Content-Type: text/plain
+X-Cache: MISS from fw-central
+X-Cache-Lookup: MISS from fw-central:3128
+Transfer-Encoding: chunked
+Via: 1.1 fw-central (squid/5.7)
+Connection: keep-alive
+
+Respuesta de prueba desde Fedora por Squid.
+[salida 0]

@@ -1,0 +1,112 @@
+$ cat /etc/debian_version; ip -br -4 addr; ip -4 route; sysctl net.ipv4.ip_forward
+12.15
+lo               UNKNOWN        127.0.0.1/8 
+ens3             UP             10.255.255.2/30 
+ens4.10@ens4     UP             192.168.10.1/24 
+ens4.20@ens4     UP             192.168.20.1/24 
+ens4.30@ens4     UP             192.168.30.1/24 
+default via 10.255.255.1 dev ens3 onlink 
+10.255.255.0/30 dev ens3 proto kernel scope link src 10.255.255.2 
+192.168.10.0/24 dev ens4.10 proto kernel scope link src 192.168.10.1 
+192.168.20.0/24 dev ens4.20 proto kernel scope link src 192.168.20.1 
+192.168.30.0/24 dev ens4.30 proto kernel scope link src 192.168.30.1 
+net.ipv4.ip_forward = 1
+[salida 0]
+
+$ nft list ruleset
+table inet firewall {
+	chain input {
+		type filter hook input priority filter; policy drop;
+		iifname "lo" accept
+		ct state established,related accept
+		iifname "ens3" ip saddr 10.255.255.1 tcp dport 22 accept
+		iifname "ens3" ip saddr 10.255.255.1 tcp dport 3128 accept
+		ip protocol icmp accept
+		iifname { "ens4.10", "ens4.20", "ens4.30" } tcp dport 3128 accept
+	}
+
+	chain forward {
+		type filter hook forward priority filter; policy drop;
+		ct state established,related accept
+		iifname "ens4.10" oifname { "ens4.20", "ens4.30" } accept
+		iifname "ens4.20" oifname { "ens4.10", "ens4.30" } drop
+		iifname "ens4.30" oifname { "ens4.10", "ens4.20" } drop
+	}
+
+	chain output {
+		type filter hook output priority filter; policy accept;
+	}
+}
+table ip filter {
+	chain INPUT {
+		type filter hook input priority filter; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority filter; policy accept;
+		iifname "enp0s8.30" oifname "enp0s8.10" counter packets 0 bytes 0 drop
+		iifname "enp0s8.30" oifname "enp0s8.20" counter packets 0 bytes 0 drop
+		ct state related,established counter packets 4 bytes 336 accept
+		iifname "enp0s8.10" counter packets 0 bytes 0 accept
+		iifname "enp0s8.20" counter packets 0 bytes 0 accept
+		iifname "enp0s8.30" oifname "enp0s3" counter packets 0 bytes 0 accept
+	}
+
+	chain OUTPUT {
+		type filter hook output priority filter; policy accept;
+	}
+}
+table ip nat {
+	chain PREROUTING {
+		type nat hook prerouting priority dstnat; policy accept;
+	}
+
+	chain INPUT {
+		type nat hook input priority 100; policy accept;
+	}
+
+	chain OUTPUT {
+		type nat hook output priority -100; policy accept;
+	}
+
+	chain POSTROUTING {
+		type nat hook postrouting priority srcnat; policy accept;
+		oifname "enp0s3" counter packets 0 bytes 0 masquerade
+		oifname "enp0s3" counter packets 0 bytes 0 masquerade
+	}
+}
+# Warning: table ip filter is managed by iptables-nft, do not touch!
+# Warning: table ip nat is managed by iptables-nft, do not touch!
+[salida 0]
+
+$ systemctl is-active squid nftables; systemctl is-enabled squid nftables; ss -lnt '( sport = :3128 )'
+active
+active
+enabled
+enabled
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      256                *:3128            *:*          
+[salida 0]
+
+$ ls -l /etc/nftables.conf; grep -hE '^[[:space:]]*(http_port|http_access|acl|include)[[:space:]]' /etc/squid/squid.conf /etc/squid/conf.d/*.conf 2>/dev/null
+-rwxr-xr-x 1 root root 1169 Nov 26 02:24 /etc/nftables.conf
+http_port 3128
+acl vlan10 src 192.168.10.0/24
+acl vlan20 src 192.168.20.0/24
+acl vlan30 src 192.168.30.0/24
+acl fedora src 10.255.255.1/32
+acl sitios_bloqueados dstdomain .example.com .example.org
+acl SSL_ports port 443
+acl Safe_ports port 80
+acl Safe_ports port 443
+acl Safe_ports port 1025-65535
+acl CONNECT method CONNECT
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_ports
+http_access deny sitios_bloqueados
+http_access allow vlan10
+http_access allow vlan20
+http_access allow vlan30
+http_access allow fedora
+http_access deny all
+[salida 0]

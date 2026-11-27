@@ -1,0 +1,86 @@
+Extractos de consola del 26 de noviembre de 2026. Salida STP abreviada a las líneas de estado.
+
+SW-PRINCIPAL#show vlan-switch
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa1/4, Fa1/5, Fa1/6, Fa1/7
+                                                Fa1/8, Fa1/9, Fa1/10, Fa1/11
+                                                Fa1/12, Fa1/13, Fa1/14, Fa1/15
+10   ADMINISTRACION                   active    Fa1/1
+20   SOPORTE                          active    Fa1/2
+30   DIAGNOSTICO                      active    Fa1/3
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        1002   1003
+10   enet  100010     1500  -      -      -        -    -        0      0
+20   enet  100020     1500  -      -      -        -    -        0      0
+30   enet  100030     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        1      1003
+1003 tr    101003     1500  1005   0      -        -    srb      1      1002
+1004 fdnet 101004     1500  -      -      1        ibm  -        0      0
+1005 trnet 101005     1500  -      -      1        ibm  -        0      0
+
+SW-PRINCIPAL#show interfaces trunk
+Port      Mode         Encapsulation  Status        Native vlan
+Fa1/0     on           802.1q         trunking      1
+
+Port      Vlans allowed on trunk
+Fa1/0     1,10,20,30,1002-1005
+
+Port      Vlans allowed and active in management domain
+Fa1/0     1,10,20,30
+
+Port      Vlans in spanning tree forwarding state and not pruned
+Fa1/0     1,10,20,30
+
+SW-PRINCIPAL#show interfaces status
+Port    Name               Status       Vlan       Duplex Speed Type
+Fa1/0                      connected    trunk      a-full   a-100 10/100BaseTX
+Fa1/1                      connected    10         a-full   a-100 10/100BaseTX
+Fa1/2                      connected    20         a-full   a-100 10/100BaseTX
+Fa1/3                      connected    30         a-full   a-100 10/100BaseTX
+Fa1/4                      notconnect   1            auto    auto 10/100BaseTX
+Fa1/5                      notconnect   1            auto    auto 10/100BaseTX
+Fa1/6                      notconnect   1            auto    auto 10/100BaseTX
+Fa1/7                      notconnect   1            auto    auto 10/100BaseTX
+Fa1/8                      notconnect   1            auto    auto 10/100BaseTX
+Fa1/9                      notconnect   1            auto    auto 10/100BaseTX
+Fa1/10                     notconnect   1            auto    auto 10/100BaseTX
+Fa1/11                     notconnect   1            auto    auto 10/100BaseTX
+Fa1/12                     notconnect   1            auto    auto 10/100BaseTX
+Fa1/13                     notconnect   1            auto    auto 10/100BaseTX
+Fa1/14                     notconnect   1            auto    auto 10/100BaseTX
+Fa1/15                     notconnect   1            auto    auto 10/100BaseTX
+
+SW-PRINCIPAL#show spanning-tree vlan 10
+VLAN10 is executing the ieee compatible Spanning Tree protocol
+ Port 41 (FastEthernet1/0) of VLAN10 is forwarding
+
+SW-PRINCIPAL#show spanning-tree vlan 20
+VLAN20 is executing the ieee compatible Spanning Tree protocol
+ Port 41 (FastEthernet1/0) of VLAN20 is forwarding
+ Port 43 (FastEthernet1/2) of VLAN20 is forwarding
+
+SW-PRINCIPAL#show spanning-tree vlan 30
+VLAN30 is executing the ieee compatible Spanning Tree protocol
+ Port 41 (FastEthernet1/0) of VLAN30 is forwarding
+ Port 44 (FastEthernet1/3) of VLAN30 is forwarding
+
+Configuración de arranque exportada por Dynamips (i1_startup-config.cfg)
+interface FastEthernet1/0
+ switchport trunk allowed vlan 1,10,20,30,1002-1005
+ switchport mode trunk
+
+interface FastEthernet1/1
+ switchport access vlan 10
+
+interface FastEthernet1/2
+ switchport access vlan 20
+
+interface FastEthernet1/3
+ switchport access vlan 30

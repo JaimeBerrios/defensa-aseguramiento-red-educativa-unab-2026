@@ -1,0 +1,23 @@
+
+PC-ADMIN> show ip
+
+NAME        : PC-ADMIN[1]
+IP/MASK     : 192.168.10.10/24
+GATEWAY     : 192.168.10.1
+DNS         : 
+MAC         : 00:50:79:66:68:00
+LPORT       : 10022
+RHOST:PORT  : 127.0.0.1:10023
+MTU         : 1500
+
+PC-ADMIN> ping 192.168.20.10 -c 2
+
+84 bytes from 192.168.20.10 icmp_seq=1 ttl=63 time=2.145 ms
+84 bytes from 192.168.20.10 icmp_seq=2 ttl=63 time=1.293 ms
+
+PC-ADMIN> ping 192.168.30.10 -c 2
+
+84 bytes from 192.168.30.10 icmp_seq=1 ttl=63 time=1.119 ms
+84 bytes from 192.168.30.10 icmp_seq=2 ttl=63 time=1.214 ms
+
+PC-ADMIN> 

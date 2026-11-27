@@ -1,0 +1,16 @@
+2026-11-26T03:05:28.511072-06:00
+GET /v2/projects/2b304ae9-80ac-4bb9-9c56-9b7b2e68a35d[/nodes|/links]
+Proyecto_GNS3_Fedora | opened
+
+SW-PRINCIPAL | dynamips | started | consola 5000
+PC-ADMIN | vpcs | started | consola 5001
+PC-SOPORTE | vpcs | started | consola 5003
+PC-DIAGNOSTICO | vpcs | started | consola 5005
+FW-CENTRAL | qemu | started | consola 5900
+RED-FEDORA | cloud | started | consola None
+
+SW-PRINCIPAL FastEthernet1/1 <-> PC-ADMIN Ethernet0
+SW-PRINCIPAL FastEthernet1/2 <-> PC-SOPORTE Ethernet0
+SW-PRINCIPAL FastEthernet1/3 <-> PC-DIAGNOSTICO Ethernet0
+FW-CENTRAL Ethernet1 <-> SW-PRINCIPAL FastEthernet1/0
+RED-FEDORA gns3tap0 <-> FW-CENTRAL Ethernet0

@@ -1,0 +1,12 @@
+
+PC-ADMIN> ping 192.168.20.10 -c 2
+
+84 bytes from 192.168.20.10 icmp_seq=1 ttl=63 time=0.834 ms
+84 bytes from 192.168.20.10 icmp_seq=2 ttl=63 time=1.470 ms
+
+PC-ADMIN> ping 192.168.30.10 -c 2
+
+84 bytes from 192.168.30.10 icmp_seq=1 ttl=63 time=1.291 ms
+84 bytes from 192.168.30.10 icmp_seq=2 ttl=63 time=1.917 ms
+
+PC-ADMIN> 

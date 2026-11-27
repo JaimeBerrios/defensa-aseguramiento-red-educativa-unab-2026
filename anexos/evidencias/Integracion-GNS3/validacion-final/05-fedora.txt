@@ -1,0 +1,132 @@
+$ ip -br -4 addr show gns3tap0
+gns3tap0         UP             10.255.255.1/30 
+[salida 0]
+
+$ curl --noproxy  --max-time 20 -v -I --proxy http://10.255.255.2:3128 https://www.debian.org/
+HTTP/1.1 200 Connection established
+
+HTTP/2 200 
+content-location: index.en.html
+vary: negotiate,accept-language,Accept-Encoding,cookie
+tcn: choice
+x-content-type-options: nosniff
+x-frame-options: sameorigin
+referrer-policy: no-referrer
+x-xss-protection: 1
+permissions-policy: interest-cohort=()
+strict-transport-security: max-age=15552000
+last-modified: Sat, 21 Nov 2026 23:29:17 GMT
+etag: "3df7-660d1bab39af4"
+accept-ranges: bytes
+content-length: 15863
+cache-control: max-age=86400
+expires: Fri, 27 Nov 2026 22:30:35 GMT
+x-clacks-overhead: GNU Terry Pratchett
+content-type: text/html
+content-language: en
+date: Thu, 26 Nov 2026 22:30:35 GMT
+server: Apache
+
+*   Trying 10.255.255.2:3128...
+* CONNECT: no ALPN negotiated
+* Establishing HTTP proxy tunnel to www.debian.org:443
+> CONNECT www.debian.org:443 HTTP/1.1
+> Host: www.debian.org:443
+> User-Agent: curl/8.21.0
+> Proxy-Connection: Keep-Alive
+> 
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+
+  0      0   0      0   0      0      0      0                              0< HTTP/1.1 200 Connection established
+< 
+* CONNECT phase completed for HTTP proxy
+* CONNECT tunnel established, response 200
+* ALPN: curl offers h2,http/1.1
+} [5 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+} [1571 bytes data]
+* SSL Trust Anchors:
+*   CAfile: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+{ [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+{ [1210 bytes data]
+* TLSv1.3 (IN), TLS change cipher, Change cipher spec (1):
+{ [1 bytes data]
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+{ [19 bytes data]
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+{ [4327 bytes data]
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+{ [520 bytes data]
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+{ [52 bytes data]
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+} [52 bytes data]
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / RSASSA-PSS
+* ALPN: server accepted h2
+* Server certificate:
+*   subject: CN=www.debian.org
+*   start date: Oct  1 00:37:05 2026 GMT
+*   expire date: Dec 30 00:37:04 2026 GMT
+*   issuer: C=US; O=Let's Encrypt; CN=YR1
+*   Certificate level 0: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 3: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+*   subjectAltName: "www.debian.org" matches cert's "www.debian.org"
+* OpenSSL verify result: 0
+* SSL certificate verified via OpenSSL.
+* Established connection to 10.255.255.2 (10.255.255.2 port 3128) from 10.255.255.1 port 57754 
+
+  0      0   0      0   0      0      0      0                              0* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://www.debian.org/
+* [HTTP/2] [1] [:method: HEAD]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: www.debian.org]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.21.0]
+* [HTTP/2] [1] [accept: */*]
+} [5 bytes data]
+> HEAD / HTTP/2
+> Host: www.debian.org
+> User-Agent: curl/8.21.0
+> Accept: */*
+> 
+* Request completely sent off
+} [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [57 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [57 bytes data]
+< HTTP/2 200 
+< content-location: index.en.html
+< vary: negotiate,accept-language,Accept-Encoding,cookie
+< tcn: choice
+< x-content-type-options: nosniff
+< x-frame-options: sameorigin
+< referrer-policy: no-referrer
+< x-xss-protection: 1
+< permissions-policy: interest-cohort=()
+< strict-transport-security: max-age=15552000
+< last-modified: Sat, 21 Nov 2026 23:29:17 GMT
+< etag: "3df7-660d1bab39af4"
+< accept-ranges: bytes
+< content-length: 15863
+< cache-control: max-age=86400
+< expires: Fri, 27 Nov 2026 22:30:35 GMT
+< x-clacks-overhead: GNU Terry Pratchett
+< content-type: text/html
+< content-language: en
+< date: Thu, 26 Nov 2026 22:30:35 GMT
+< server: Apache
+< 
+} [5 bytes data]
+
+  0  15863   0      0   0      0      0      0                              0
+  0  15863   0      0   0      0      0      0                              0
+  0  15863   0      0   0      0      0      0                              0
+* Connection #0 to host www.debian.org:443 left intact
+[salida 0]

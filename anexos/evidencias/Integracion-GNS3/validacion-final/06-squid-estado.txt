@@ -1,0 +1,26 @@
+$ systemctl is-active squid nftables; ss -lnt '( sport = :3128 )'; squid -k parse >/dev/null 2>&1; printf 'squid parse: %s\n' $?; grep -hE '^[[:space:]]*(http_port|http_access|acl)[[:space:]]' /etc/squid/squid.conf /etc/squid/conf.d/*.conf 2>/dev/null
+active
+active
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      256                *:3128            *:*          
+squid parse: 0
+http_port 3128
+acl vlan10 src 192.168.10.0/24
+acl vlan20 src 192.168.20.0/24
+acl vlan30 src 192.168.30.0/24
+acl fedora src 10.255.255.1/32
+acl sitios_bloqueados dstdomain .example.com .example.org
+acl SSL_ports port 443
+acl Safe_ports port 80
+acl Safe_ports port 443
+acl Safe_ports port 1025-65535
+acl CONNECT method CONNECT
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_ports
+http_access deny sitios_bloqueados
+http_access allow vlan10
+http_access allow vlan20
+http_access allow vlan30
+http_access allow fedora
+http_access deny all
+[salida 0]

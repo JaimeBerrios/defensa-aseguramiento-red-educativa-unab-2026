@@ -1,0 +1,4 @@
+$ grep -F ' 192.168.30.250 ' /var/log/squid/access.log | grep -F 'www.debian.org' | tail -n 12
+1795732972.815    167 192.168.30.250 TCP_MISS/302 771 GET http://www.debian.org/ - HIER_DIRECT/128.31.0.62 text/html
+1795732973.176    312 192.168.30.250 TCP_TUNNEL/200 22760 CONNECT www.debian.org:443 - HIER_DIRECT/128.31.0.62 -
+[salida 0]

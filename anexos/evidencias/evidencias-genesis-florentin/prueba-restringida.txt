@@ -1,0 +1,28 @@
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0*   Trying 127.0.0.1:3128...
+* CONNECT: no ALPN negotiated
+* allocate connect buffer
+* Establish HTTP proxy tunnel to restringido.test:443
+> CONNECT restringido.test:443 HTTP/1.1
+> Host: restringido.test:443
+> User-Agent: curl/8.18.0
+> Proxy-Connection: Keep-Alive
+> 
+< HTTP/1.1 403 Forbidden
+< Server: squid/7.7
+< Mime-Version: 1.0
+< Date: Thu, 26 Nov 2026 03:37:21 GMT
+< Content-Type: text/html;charset=utf-8
+< Content-Length: 3071
+< X-Squid-Error: ERR_ACCESS_DENIED 0
+< Vary: Accept-Language
+< Content-Language: en
+< Cache-Status: ubuntu-proxy
+< Via: 1.1 ubuntu-proxy (squid/7.7)
+< Connection: keep-alive
+< 
+* CONNECT tunnel failed, response 403
+
+* closing connection #0
+curl: (7) CONNECT tunnel failed, response 403

@@ -1,0 +1,164 @@
+VLAN 30 | origen 192.168.30.250/24 | gateway 192.168.30.1 | destino www.debian.org
+$ ip -4 addr flush dev eth0
+[salida 0]
+
+$ /gns3/bin/busybox arping -D -c 2 -w 4 -I eth0 192.168.30.250
+ARPING 192.168.30.250 from 0.0.0.0 eth0
+Sent 2 probe(s) (0 broadcast(s))
+Received 0 response(s) (0 request(s), 0 broadcast(s))
+[salida 0]
+
+$ ip addr add 192.168.30.250/24 dev eth0
+[salida 0]
+
+$ ip route replace default via 192.168.30.1 dev eth0
+[salida 0]
+
+$ ip route get 192.168.30.1
+192.168.30.1 dev eth0  src 192.168.30.250 
+[salida 0]
+
+$ ping -c 3 -W 2 192.168.30.1
+PING 192.168.30.1 (192.168.30.1): 56 data bytes
+64 bytes from 192.168.30.1: seq=0 ttl=64 time=1.045 ms
+64 bytes from 192.168.30.1: seq=1 ttl=64 time=0.743 ms
+64 bytes from 192.168.30.1: seq=2 ttl=64 time=0.730 ms
+
+--- 192.168.30.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.730/0.839/1.045 ms
+[salida 0]
+
+$ curl --noproxy '' --interface 192.168.30.250 --max-time 20 -v -sS -o /dev/null --proxy http://192.168.30.1:3128 http://www.debian.org/
+*   Trying 192.168.30.1:3128...
+* Name '192.168.30.250' family 2 resolved to '192.168.30.250' family 2
+* Local port: 0
+* Established connection to 192.168.30.1 (192.168.30.1 port 3128) from 192.168.30.250 port 45422 
+* using HTTP/1.x
+> GET http://www.debian.org/ HTTP/1.1
+> Host: www.debian.org
+> User-Agent: curl/8.23.0
+> Accept: */*
+> Proxy-Connection: Keep-Alive
+> 
+* Request completely sent off
+< HTTP/1.1 302 Found
+< Date: Thu, 26 Nov 2026 22:42:52 GMT
+< Server: Apache
+< X-Content-Type-Options: nosniff
+< X-Frame-Options: sameorigin
+< Referrer-Policy: no-referrer
+< X-Xss-Protection: 1
+< Permissions-Policy: interest-cohort=()
+< Location: https://www.debian.org/
+< Content-Length: 311
+< Content-Type: text/html; charset=iso-8859-1
+< X-Cache: MISS from fw-central
+< X-Cache-Lookup: MISS from fw-central:3128
+< Via: 1.1 fw-central (squid/5.7)
+< Connection: keep-alive
+< 
+{ [311 bytes data]
+* Connection #0 to host 192.168.30.1:3128 left intact
+[salida 0]
+
+$ curl --noproxy '' --interface 192.168.30.250 --max-time 20 -v -sS -o /dev/null --proxy http://192.168.30.1:3128 https://www.debian.org/
+*   Trying 192.168.30.1:3128...
+* Name '192.168.30.250' family 2 resolved to '192.168.30.250' family 2
+* Local port: 0
+* CONNECT: no ALPN negotiated
+* Establishing HTTP proxy tunnel to www.debian.org:443
+> CONNECT www.debian.org:443 HTTP/1.1
+> Host: www.debian.org:443
+> User-Agent: curl/8.23.0
+> Proxy-Connection: Keep-Alive
+> 
+< HTTP/1.1 200 Connection established
+< 
+* CONNECT phase completed for HTTP proxy
+* CONNECT tunnel established, response 200
+* ALPN: curl offers h2,http/1.1
+} [5 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+} [1560 bytes data]
+* SSL Trust Anchors:
+*   CAfile: /etc/ssl/certs/ca-certificates.crt
+*   CApath: /etc/ssl/certs
+{ [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+{ [1210 bytes data]
+* TLSv1.3 (IN), TLS change cipher, Change cipher spec (1):
+{ [1 bytes data]
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+{ [19 bytes data]
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+{ [4327 bytes data]
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+{ [520 bytes data]
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+{ [52 bytes data]
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+} [52 bytes data]
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / RSASSA-PSS
+* ALPN: server accepted h2
+* Server certificate:
+*   subject: CN=www.debian.org
+*   start date: Oct  1 00:37:05 2026 GMT
+*   expire date: Dec 30 00:37:04 2026 GMT
+*   issuer: C=US; O=Let's Encrypt; CN=YR1
+*   Certificate level 0: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 1: Public key type RSA (2048/112 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 3: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+*   subjectAltName: "www.debian.org" matches cert's "www.debian.org"
+* OpenSSL verify result: 0
+* SSL certificate verified via OpenSSL.
+* Established connection to 192.168.30.1 (192.168.30.1 port 3128) from 192.168.30.250 port 45436 
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://www.debian.org/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: www.debian.org]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.23.0]
+* [HTTP/2] [1] [accept: */*]
+} [5 bytes data]
+> GET / HTTP/2
+> Host: www.debian.org
+> User-Agent: curl/8.23.0
+> Accept: */*
+> 
+* Request completely sent off
+} [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [57 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [57 bytes data]
+< HTTP/2 200 
+< content-location: index.en.html
+< vary: negotiate,accept-language,Accept-Encoding,cookie
+< tcn: choice
+< x-content-type-options: nosniff
+< x-frame-options: sameorigin
+< referrer-policy: no-referrer
+< x-xss-protection: 1
+< permissions-policy: interest-cohort=()
+< strict-transport-security: max-age=15552000
+< last-modified: Sat, 21 Nov 2026 23:29:17 GMT
+< etag: "3df7-660d1bab39af4"
+< accept-ranges: bytes
+< content-length: 15863
+< cache-control: max-age=86400
+< expires: Fri, 27 Nov 2026 22:42:53 GMT
+< x-clacks-overhead: GNU Terry Pratchett
+< content-type: text/html
+< content-language: en
+< date: Thu, 26 Nov 2026 22:42:53 GMT
+< server: Apache
+< 
+{ [15863 bytes data]
+* Connection #0 to host www.debian.org:443 left intact
+[salida 0]
+

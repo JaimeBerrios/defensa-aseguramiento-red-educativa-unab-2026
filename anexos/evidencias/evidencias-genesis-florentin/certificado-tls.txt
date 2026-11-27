@@ -1,0 +1,6 @@
+subject=CN=permitido.test
+issuer=CN=permitido.test
+notBefore=Nov 26 02:44:39 2026 GMT
+notAfter=Nov 26 02:44:39 2027 GMT
+X509v3 Subject Alternative Name: 
+    DNS:permitido.test
